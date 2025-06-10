@@ -8,7 +8,12 @@
   </head>
 
   <body>
-    <header></header>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+      </nav>
+    </header>
 
     <main>
       <h1>Crypto Portfolio Tracker</h1>
@@ -22,7 +27,16 @@
       </section>
     </main>
 
-    <footer></footer>
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <span id="modal-close">&times;</span>
+        <p id="modal-message">Modal message here</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Crypto Portfolio Tracker</p>
+    </footer>
 
     <script type="module" src="./main.js"></script>
   </body>
