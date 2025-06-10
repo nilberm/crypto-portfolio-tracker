@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crypto Portfolio Tracker | Portfolio</title>
-    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Crypto Portfolio Tracker | Home</title>
+    <link rel="stylesheet" href="./styles/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap"
       rel="stylesheet"
@@ -26,14 +26,28 @@
     </header>
 
     <main>
-      <h1>My Portfolio</h1>
-      <section id="portfolio-list"></section>
+      <h1>Crypto Portfolio Tracker</h1>
+      <section>
+        <input
+          type="text"
+          id="crypto-search"
+          placeholder="Search for a cryptocurrency..."
+        />
+        <div id="search-results"></div>
+      </section>
     </main>
+
+    <!-- <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <span id="modal-close">&times;</span>
+        <p id="modal-message">Modal message here</p>
+      </div>
+    </div> -->
 
     <footer class="site-footer">
       <p>&copy; 2025 Crypto Portfolio Tracker</p>
     </footer>
 
-    <script type="module" src="../main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>

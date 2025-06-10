@@ -7,13 +7,18 @@ export default defineConfig({
     outDir: "../dist",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "src/pages/index.html"),
-        portfolio: resolve(__dirname, "src/pages/portfolio.html"),
-        coinDetail: resolve(__dirname, "src/pages/coin-detail.html"),
+        index: resolve(__dirname, "src/index.html"),
+        portfolio: resolve(__dirname, "src/portfolio.html"),
+        coinDetail: resolve(__dirname, "src/coin-detail.html"),
+      },
+      output: {
+        entryFileNames: "assets/[name].js",
+        chunkFileNames: "assets/[name].js",
+        assetFileNames: "assets/[name].[ext]",
       },
     },
   },
   server: {
-    open: "/pages/index.html",
+    open: "/index.html",
   },
 });
