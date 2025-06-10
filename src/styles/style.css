@@ -1,3 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0d0d1a;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+a {
+  color: #00d1b2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button-primary {
+  background-color: #00d1b2;
+  color: #0d0d1a;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #00bfa3;
+}
+
+.text-success {
+  color: #03c988;
+}
+
+.text-danger {
+  color: #f24822;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.card {
+  background-color: #1e1e2f;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card + .card {
+  margin-top: 1rem;
+}
+
 .hidden {
   display: none;
 }
@@ -27,4 +105,37 @@
   right: 10px;
   cursor: pointer;
   font-weight: bold;
+}
+
+/* ---------- Header  -------------------- */
+.site-header {
+  background-color: #1e1e2f;
+  padding: 1rem 0;
+  border-bottom: 1px solid #2e2e40;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo a {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.site-nav a {
+  margin-left: 2rem;
+  color: #cccccc;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.site-nav a:hover {
+  color: #00d1b2;
 }

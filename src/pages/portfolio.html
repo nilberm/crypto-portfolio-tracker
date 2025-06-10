@@ -3,16 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crypto Portfolio Tracker | Page Title</title>
-    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Crypto Portfolio Tracker | Portfolio</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="portfolio.html">Portfolio</a>
-      </nav>
+    <header class="site-header">
+      <div class="container header-container">
+        <div class="site-logo">
+          <a href="/src/pages/index.html">CryptoTracker</a>
+        </div>
+        <nav class="site-nav">
+          <a href="/src/pages/index.html">Home</a>
+          <a href="/src/pages/portfolio.html">Portfolio</a>
+          <a href="#">Settings</a>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -24,6 +34,6 @@
       <p>&copy; 2025 Crypto Portfolio Tracker</p>
     </footer>
 
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="../main.js"></script>
   </body>
 </html>
