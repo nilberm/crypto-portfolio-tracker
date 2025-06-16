@@ -25,20 +25,25 @@
       </div>
     </header>
 
-    <main>
-      <h1 id="coin-name">Coin Name</h1>
-      <section id="coin-chart">
-        <!-- Chart will go here -->
-      </section>
-      <section id="coin-info">
-        <!-- Coin info, price, description, etc. -->
-      </section>
+    <main class="container section coin-detail">
+      <h1 id="coin-name">Loading…</h1>
+      <div class="coin-header">
+        <img id="coin-image" src="" alt="" width="64" height="64" />
+        <div>
+          <p>Current Price: <span id="coin-price"></span></p>
+          <p>24h Change: <span id="coin-change"></span></p>
+        </div>
+      </div>
+      <canvas id="price-chart"></canvas>
+      <button id="add-to-portfolio" class="button-primary">Add to Portfolio</button>
     </main>
-
+    
+    
+    
     <footer class="site-footer">
       <p>&copy; 2025 Crypto Portfolio Tracker</p>
     </footer>
-
+    
     <script type="module" src="./main.js"></script>
   </body>
 </html>

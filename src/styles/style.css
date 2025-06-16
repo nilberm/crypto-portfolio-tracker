@@ -4,7 +4,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   display: flex;
@@ -32,6 +33,10 @@ h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   color: #ffffff;
+}
+
+.title {
+  margin: 1rem 2rem;
 }
 
 a {
@@ -153,10 +158,102 @@ a:hover {
 
 /* --------------- Footer --------------- */
 .site-footer {
-  background-color: #1E1E2F;
-  color: #CCCCCC;
+  background-color: #1e1e2f;
+  color: #cccccc;
   text-align: center;
   padding: 1rem;
-  border-top: 1px solid #2E2E40;
+  border-top: 1px solid #2e2e40;
   font-size: 0.9rem;
 }
+
+/* ---------- Search --------------------*/
+
+.search-section {
+  margin: 2rem;
+  position: relative;
+}
+
+#coin-search {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  background-color: #1e1e2f;
+  color: #ffffff;
+  border: 1px solid #2e2e40;
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#coin-search::placeholder {
+  color: #888888;
+}
+
+#coin-search:focus {
+  outline: none;
+  border-color: #00d1b2;
+  box-shadow: 0 0 0 2px rgba(0, 209, 178, 0.3);
+}
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #2e2e40;
+  border-top: none;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+.search-results li {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  background-color: #1e1e2f;
+  border-bottom: 1px solid #2e2e40;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.search-results li img {
+  margin-right: 0.75rem;
+  border-radius: 50%;
+}
+
+.search-results li:hover,
+.search-results li:focus {
+  background-color: #00d1b2;
+  color: #0d0d1a;
+}
+
+.search-results:empty {
+  display: none;
+}
+
+
+
+/* ---------- Search Results --------------------*/
+.search-results-container {
+  background-color: #0d0d1a;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+.search-result-item:hover {
+  background: #1a1a2e;
+}
+.search-result-item img {
+  margin-right: 0.5rem;
+}
+

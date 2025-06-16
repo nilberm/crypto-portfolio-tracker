@@ -26,14 +26,18 @@
     </header>
 
     <main>
-      <h1>Crypto Portfolio Tracker</h1>
-      <section>
+      <h1 class="title">Crypto Portfolio Tracker</h1>
+      <section class="search-section">
         <input
           type="text"
-          id="crypto-search"
-          placeholder="Search for a cryptocurrency..."
+          id="coin-search"
+          placeholder="Search cryptocurrencies…"
+          autocomplete="off"
         />
-        <div id="search-results"></div>
+        <div
+          id="search-results-container"
+          class="search-results-container"
+        ></div>
       </section>
     </main>
 
