@@ -1,4 +1,6 @@
 import ExternalServices from "./modules/ExternalServices.js";
+import NewsService from "./modules/NewsService.js";
+import Portfolio from "./modules/Portfolio.js";
 import { getParam } from "./modules/utils.js";
 import Chart from "chart.js/auto";
 
@@ -45,12 +47,12 @@ function renderSearchResults(coins) {
 }
 
 function initSearch() {
-  const searchInput = document.getElementById("coin-search");
+  const input = document.getElementById("coin-search");
   const container = document.getElementById("search-results-container");
-  if (!searchInput || !container) return;
+  if (!input || !container) return;
 
   let debounceTimer;
-  searchInput.addEventListener("input", (e) => {
+  input.addEventListener("input", (e) => {
     clearTimeout(debounceTimer);
     const term = e.target.value.trim();
 
@@ -59,7 +61,6 @@ function initSearch() {
         container.innerHTML = "";
         return;
       }
-
       try {
         const coins = await service.searchCoins(term);
         renderSearchResults(coins.slice(0, 25));
@@ -74,11 +75,9 @@ function initSearch() {
 /** ────── COIN DETAIL ────── */
 function renderCoinInfo(data) {
   document.getElementById("coin-name").textContent = data.name;
-
   const imgEl = document.getElementById("coin-image");
   imgEl.src = data.image.large;
   imgEl.alt = data.name;
-
   document.getElementById(
     "coin-price"
   ).textContent = `$${data.market_data.current_price.usd.toLocaleString()}`;
@@ -120,18 +119,37 @@ async function renderPriceChart(id) {
 }
 
 function bindAddToPortfolio(data) {
-  const btn = document.getElementById("add-to-portfolio");
-  if (!btn) return;
+  const form = document.getElementById("purchase-form");
+  if (!form) return;
 
-  btn.addEventListener("click", () => {
-    const portfolio = JSON.parse(localStorage.getItem("portfolio") || "[]");
-    portfolio.push({
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const amount = parseFloat(document.getElementById("purchase-amount").value);
+    const buyPrice = parseFloat(
+      document.getElementById("purchase-price").value
+    );
+    const currentPrice = data.market_data.current_price.usd;
+
+    const portfolioItem = {
       id: data.id,
       name: data.name,
-      price: data.market_data.current_price.usd,
-    });
+      amount,
+      buyPrice,
+      currentPrice,
+    };
+
+    const portfolio = JSON.parse(localStorage.getItem("portfolio") || "[]");
+    portfolio.push(portfolioItem);
     localStorage.setItem("portfolio", JSON.stringify(portfolio));
-    alert(`${data.name} added to portfolio!`);
+
+    alert(
+      `${data.name} added to portfolio!\n` +
+        `Amount: ${amount}\n` +
+        `Buy Price: $${buyPrice.toFixed(2)}\n` +
+        `Current Price: $${currentPrice.toFixed(2)}`
+    );
+    form.reset();
   });
 }
 
@@ -149,9 +167,59 @@ async function initCoinDetail() {
   }
 }
 
+/** ────── PORTFOLIO ────── */
+async function initPortfolio() {
+  const summaryEl = document.getElementById("portfolio-summary");
+  const tbody = document.querySelector("#portfolio-list tbody");
+  if (!summaryEl || !tbody) return;
+
+  const portfolio = new Portfolio(
+    service,
+    "#portfolio-summary",
+    "#portfolio-list tbody"
+  );
+  await portfolio.init();
+}
+
+/** ────── News ────── */
+async function renderNews() {
+  const svc = new NewsService();
+  let items = [];
+  try {
+    items = await svc.getLatest();
+  } catch (err) {
+    console.error("News load error:", err);
+    document.getElementById(
+      "news-container"
+    ).innerHTML = `<p class="error">Failed to load news</p>`;
+    return;
+  }
+
+  const html = items
+    .slice(0, 5)
+    .map(
+      (n) => `
+    <article class="news-item">
+      <a href="${n.url}" target="_blank" rel="noopener">
+        <h3>${n.title}</h3>
+        <p>${n.body.substring(0, 100).trim()}…</p>
+        <footer>
+          <small>${new Date(n.published_on * 1000).toLocaleDateString()}</small>
+        </footer>
+      </a>
+    </article>
+  `
+    )
+    .join("");
+
+  document.getElementById("news-container").innerHTML = html;
+}
+
 /** ────── BOOTSTRAP ────── */
 document.addEventListener("DOMContentLoaded", () => {
   initModal();
   initSearch();
   initCoinDetail();
+  initPortfolio();
+  renderNews();
 });
